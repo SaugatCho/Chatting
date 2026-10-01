@@ -1,13 +1,4 @@
 <!DOCTYPE html>
-<!--
-Created using JS Bin
-http://jsbin.com
-
-Copyright (c) 2026 by SaugatCho (http://jsbin.com/begujoq/1/edit)
-
-Released under the MIT license: http://jsbin.mit-license.org
--->
-<meta name="robots" content="noindex">
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -21,7 +12,7 @@ Released under the MIT license: http://jsbin.mit-license.org
     }
 
     body {
-      font-family: Arial, sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
       background: linear-gradient(135deg, #0f172a, #111827);
       color: white;
       min-height: 100vh;
@@ -47,35 +38,37 @@ Released under the MIT license: http://jsbin.mit-license.org
 
     .auth-box {
       width: 100%;
-      max-width: 420px;
+      max-width: 400px;
       background: rgba(255,255,255,0.05);
       border: 2px solid rgba(16,185,129,0.4);
-      border-radius: 16px;
-      padding: 28px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+      border-radius: 20px;
+      padding: 30px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.3);
     }
 
     body.light-mode .auth-box {
-      background: rgba(255,255,255,0.8);
+      background: rgba(255,255,255,0.9);
       border-color: rgba(16,185,129,0.6);
     }
 
     .auth-box h1 {
       text-align: center;
-      margin-bottom: 22px;
+      margin-bottom: 28px;
       color: #34d399;
-      font-size: 2rem;
+      font-size: 2.2rem;
+      font-weight: 700;
     }
 
     .form-group {
-      margin-bottom: 18px;
+      margin-bottom: 16px;
     }
 
     label {
       display: block;
       margin-bottom: 8px;
       color: #d1d5db;
-      font-weight: bold;
+      font-weight: 600;
+      font-size: 0.95rem;
     }
 
     body.light-mode label {
@@ -84,86 +77,103 @@ Released under the MIT license: http://jsbin.mit-license.org
 
     input {
       width: 100%;
-      padding: 12px;
-      border-radius: 10px;
-      border: 1px solid rgba(52,211,153,0.6);
-      background: rgba(255,255,255,0.04);
+      padding: 12px 16px;
+      border-radius: 12px;
+      border: 1px solid rgba(52,211,153,0.5);
+      background: rgba(255,255,255,0.05);
       color: white;
       font-size: 1rem;
+      transition: all 0.2s ease;
     }
 
     body.light-mode input {
-      background: rgba(255,255,255,0.6);
+      background: rgba(255,255,255,0.7);
       color: #1f2937;
-      border-color: rgba(52,211,153,0.8);
+      border-color: rgba(52,211,153,0.7);
     }
 
     input::placeholder {
-      color: #94a3b8;
+      color: #6b7280;
     }
 
     input:focus {
       outline: none;
       border-color: #34d399;
-      background: rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.1);
+      box-shadow: 0 0 0 3px rgba(52,211,153,0.1);
     }
 
     body.light-mode input:focus {
-      background: rgba(255,255,255,0.8);
+      background: rgba(255,255,255,0.85);
     }
 
     .btn {
       width: 100%;
       padding: 12px;
       border: none;
-      border-radius: 10px;
+      border-radius: 12px;
       cursor: pointer;
       background: linear-gradient(135deg, #10b981, #059669);
       color: white;
-      font-weight: bold;
-      transition: 0.2s ease;
+      font-weight: 700;
+      font-size: 1rem;
+      transition: all 0.2s ease;
     }
 
     .btn:hover {
-      transform: translateY(-1px);
-      filter: brightness(1.08);
+      transform: translateY(-2px);
+      box-shadow: 0 5px 20px rgba(16,185,129,0.4);
     }
 
-    .toggle {
+    .toggle-auth {
       margin-top: 16px;
       text-align: center;
-      color: #d1d5db;
+      color: #9ca3af;
+      font-size: 0.95rem;
     }
 
-    body.light-mode .toggle {
-      color: #4b5563;
+    body.light-mode .toggle-auth {
+      color: #6b7280;
     }
 
-    .toggle button {
+    .toggle-auth button {
       background: none;
       border: none;
       color: #34d399;
       cursor: pointer;
-      font-weight: bold;
+      font-weight: 700;
       text-decoration: underline;
+      margin-left: 4px;
     }
 
     .error-box, .success-box {
       display: none;
-      padding: 12px;
-      margin-bottom: 18px;
-      border-radius: 10px;
-      font-size: 0.95rem;
+      padding: 12px 16px;
+      margin-bottom: 16px;
+      border-radius: 12px;
+      font-size: 0.9rem;
+      animation: slideDown 0.3s ease;
+    }
+
+    @keyframes slideDown {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     .error-box {
-      background: rgba(239,68,68,0.12);
+      background: rgba(239,68,68,0.15);
       border: 1px solid rgba(239,68,68,0.5);
       color: #fca5a5;
     }
 
     .success-box {
-      background: rgba(16,185,129,0.12);
+      background: rgba(16,185,129,0.15);
       border: 1px solid rgba(16,185,129,0.5);
       color: #bbf7d0;
     }
@@ -175,47 +185,42 @@ Released under the MIT license: http://jsbin.mit-license.org
     .chat-screen {
       display: none;
       height: 100vh;
-      max-width: 1200px;
+      max-width: 1400px;
       margin: 0 auto;
-      padding: 18px;
+      display: flex;
+      flex-direction: column;
     }
 
     .chat-header {
       background: rgba(16,185,129,0.08);
-      border: 1px solid rgba(16,185,129,0.4);
-      border-radius: 12px 12px 0 0;
-      padding: 16px 18px;
+      border-bottom: 1px solid rgba(16,185,129,0.3);
+      padding: 16px 20px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 12px;
+      gap: 15px;
       flex-wrap: wrap;
     }
 
     body.light-mode .chat-header {
-      background: rgba(16,185,129,0.1);
-      border-color: rgba(16,185,129,0.5);
+      background: rgba(16,185,129,0.08);
+      border-bottom-color: rgba(16,185,129,0.3);
     }
 
     .chat-header h1 {
       color: #34d399;
       font-size: 1.5rem;
+      font-weight: 700;
     }
 
-    .header-center {
-      display: flex;
-      align-items: center;
-      gap: 20px;
+    .header-time {
+      color: #9ca3af;
+      font-size: 0.9rem;
+      font-weight: 600;
     }
 
-    .time-display {
-      color: #cbd5e1;
-      font-size: 0.95rem;
-      font-weight: bold;
-    }
-
-    body.light-mode .time-display {
-      color: #4b5563;
+    body.light-mode .header-time {
+      color: #6b7280;
     }
 
     .header-actions {
@@ -225,203 +230,250 @@ Released under the MIT license: http://jsbin.mit-license.org
       flex-wrap: wrap;
     }
 
-    .username-badge {
+    .user-badge {
       background: rgba(139,92,246,0.2);
       color: #e9d5ff;
-      border: 1px solid rgba(139,92,246,0.5);
-      border-radius: 999px;
-      padding: 7px 12px;
-      font-weight: bold;
+      border: 1px solid rgba(139,92,246,0.4);
+      border-radius: 20px;
+      padding: 6px 14px;
+      font-weight: 600;
+      font-size: 0.9rem;
     }
 
-    body.light-mode .username-badge {
+    body.light-mode .user-badge {
       background: rgba(139,92,246,0.15);
       color: #7c3aed;
-      border-color: rgba(139,92,246,0.6);
+      border-color: rgba(139,92,246,0.5);
     }
 
-    .small-btn {
+    .icon-btn {
+      background: none;
       border: none;
-      border-radius: 8px;
-      padding: 9px 14px;
-      font-weight: bold;
+      color: #34d399;
+      font-size: 1.2rem;
       cursor: pointer;
-      color: white;
-      transition: 0.2s ease;
+      padding: 8px;
+      border-radius: 8px;
+      transition: all 0.2s ease;
     }
 
-    .small-btn:hover {
-      filter: brightness(1.1);
-    }
-
-    .theme-btn {
-      background: #059669;
-    }
-
-    .settings-btn {
-      background: #8b5cf6;
+    .icon-btn:hover {
+      background: rgba(52,211,153,0.2);
     }
 
     .logout-btn {
-      background: #ef4444;
+      background: #dc2626;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .logout-btn:hover {
+      background: #b91c1c;
     }
 
     .chat-body {
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(16,185,129,0.3);
-      border-top: none;
-      border-radius: 0 0 12px 12px;
+      flex: 1;
       display: flex;
       flex-direction: column;
-      height: calc(100vh - 150px);
+      background: rgba(255,255,255,0.02);
+      overflow: hidden;
     }
 
-    body.light-mode .chat-body {
-      background: rgba(255,255,255,0.9);
-      border-color: rgba(16,185,129,0.5);
-    }
-
-    .online-users-header {
-      padding: 12px 18px;
+    .online-info {
+      padding: 10px 20px;
       border-bottom: 1px solid rgba(16,185,129,0.2);
-      color: #d1d5db;
-      font-size: 0.9rem;
-      background: rgba(16,185,129,0.05);
+      color: #9ca3af;
+      font-size: 0.85rem;
       cursor: pointer;
-      transition: 0.2s ease;
-      user-select: none;
+      transition: background 0.2s ease;
     }
 
-    body.light-mode .online-users-header {
-      background: rgba(16,185,129,0.08);
-      color: #4b5563;
-      border-bottom-color: rgba(16,185,129,0.3);
+    body.light-mode .online-info {
+      color: #6b7280;
+      background: rgba(16,185,129,0.05);
+      border-bottom-color: rgba(16,185,129,0.2);
     }
 
-    .online-users-header:hover {
-      background: rgba(16,185,129,0.12);
+    .online-info:hover {
+      background: rgba(16,185,129,0.1);
     }
 
-    .messages {
+    .messages-container {
       flex: 1;
       overflow-y: auto;
-      padding: 18px;
+      padding: 20px;
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 12px;
     }
 
-    .msg-row {
+    .messages-container::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    .messages-container::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    .messages-container::-webkit-scrollbar-thumb {
+      background: rgba(16,185,129,0.3);
+      border-radius: 4px;
+    }
+
+    .messages-container::-webkit-scrollbar-thumb:hover {
+      background: rgba(16,185,129,0.5);
+    }
+
+    .message-group {
       display: flex;
-      width: 100%;
+      gap: 8px;
+      animation: fadeIn 0.3s ease;
     }
 
-    .msg-row.me {
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .message-group.sent {
       justify-content: flex-end;
     }
 
-    .msg-row.other {
-      justify-content: flex-start;
+    .message-bubble {
+      max-width: 60%;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(16,185,129,0.2);
+      border-radius: 18px;
+      padding: 10px 14px;
+      word-wrap: break-word;
+      line-height: 1.4;
     }
 
-    .msg-bubble {
-      max-width: 73%;
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(16,185,129,0.25);
-      border-radius: 14px;
-      padding: 10px 12px;
+    body.light-mode .message-bubble {
+      background: rgba(16,185,129,0.08);
+      border-color: rgba(16,185,129,0.3);
+      color: #1f2937;
+    }
+
+    .message-group.sent .message-bubble {
+      background: linear-gradient(135deg, #10b981, #059669);
+      border: none;
+      color: white;
+      border-radius: 18px;
+    }
+
+    .message-info {
+      font-size: 0.75rem;
+      opacity: 0.7;
+      margin-bottom: 4px;
+      color: #9ca3af;
+    }
+
+    body.light-mode .message-info {
+      color: #6b7280;
+    }
+
+    .message-text {
       word-break: break-word;
     }
 
-    body.light-mode .msg-bubble {
-      background: rgba(16,185,129,0.1);
-      border-color: rgba(16,185,129,0.4);
-      color: #1f2937;
-    }
-
-    .msg-row.me .msg-bubble {
-      background: linear-gradient(135deg, #8b5cf6, #7c3aed);
-      border-color: rgba(139,92,246,0.5);
-      border-bottom-right-radius: 4px;
-      color: white;
-    }
-
-    .msg-row.other .msg-bubble {
-      border-bottom-left-radius: 4px;
-    }
-
-    .msg-meta {
-      font-size: 0.72rem;
-      opacity: 0.8;
-      margin-bottom: 4px;
-    }
-
-    .msg-image {
+    .message-image {
       max-width: 100%;
       max-height: 300px;
-      border-radius: 8px;
+      border-radius: 12px;
       margin-top: 8px;
       cursor: pointer;
+      object-fit: cover;
     }
 
-    .msg-video {
+    .message-video {
       max-width: 100%;
       max-height: 300px;
-      border-radius: 8px;
+      border-radius: 12px;
       margin-top: 8px;
     }
 
-    .msg-file {
+    .message-file {
       background: rgba(139,92,246,0.2);
       border: 1px solid rgba(139,92,246,0.4);
-      padding: 8px 12px;
-      border-radius: 6px;
+      padding: 10px 14px;
+      border-radius: 12px;
       margin-top: 8px;
-      display: inline-block;
       cursor: pointer;
-      font-size: 0.85rem;
+      font-size: 0.9rem;
+      display: inline-block;
+      transition: all 0.2s ease;
     }
 
-    .input-area {
-      display: flex;
-      gap: 10px;
-      padding: 12px 18px 18px;
-      border-top: 1px solid rgba(16,185,129,0.2);
-      flex-wrap: wrap;
+    .message-file:hover {
+      background: rgba(139,92,246,0.3);
     }
 
-    body.light-mode .input-area {
-      border-top-color: rgba(16,185,129,0.3);
-    }
-
-    .input-controls {
-      display: flex;
-      gap: 10px;
-      width: 100%;
-    }
-
-    .input-area input[type="text"] {
+    .empty-state {
       flex: 1;
-      padding: 12px;
-      border-radius: 10px;
-      border: 1px solid rgba(16,185,129,0.5);
-      background: rgba(255,255,255,0.04);
-      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #6b7280;
+      font-size: 1.1rem;
     }
 
-    body.light-mode .input-area input[type="text"] {
+    .input-section {
+      padding: 16px 20px;
+      border-top: 1px solid rgba(16,185,129,0.2);
+      background: rgba(255,255,255,0.01);
+    }
+
+    .input-row {
+      display: flex;
+      gap: 10px;
+      align-items: flex-end;
+    }
+
+    .input-field {
+      flex: 1;
+    }
+
+    .input-field input {
+      width: 100%;
+      padding: 12px 16px;
+      border-radius: 24px;
+      border: 1px solid rgba(16,185,129,0.4);
+      background: rgba(255,255,255,0.05);
+      color: white;
+      font-size: 1rem;
+      transition: all 0.2s ease;
+    }
+
+    body.light-mode .input-field input {
       background: rgba(255,255,255,0.7);
       color: #1f2937;
-      border-color: rgba(16,185,129,0.6);
+      border-color: rgba(16,185,129,0.5);
     }
 
-    .input-area input[type="text"]:focus {
+    .input-field input::placeholder {
+      color: #6b7280;
+    }
+
+    .input-field input:focus {
       outline: none;
       border-color: #34d399;
       background: rgba(255,255,255,0.08);
+      box-shadow: 0 0 0 3px rgba(52,211,153,0.1);
     }
 
-    body.light-mode .input-area input[type="text"]:focus {
+    body.light-mode .input-field input:focus {
       background: rgba(255,255,255,0.85);
     }
 
@@ -429,291 +481,245 @@ Released under the MIT license: http://jsbin.mit-license.org
       display: none;
     }
 
-    .upload-btn {
-      background: #059669;
+    .action-btn {
+      background: #34d399;
       border: none;
-      color: white;
-      border-radius: 10px;
-      padding: 12px 16px;
-      font-weight: bold;
+      color: #0f172a;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
       cursor: pointer;
-      transition: 0.2s ease;
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      transition: all 0.2s ease;
     }
 
-    .upload-btn:hover {
-      filter: brightness(1.1);
+    .action-btn:hover {
+      background: #10b981;
+      transform: scale(1.05);
     }
 
-    .send-btn {
-      background: linear-gradient(135deg, #10b981, #059669);
+    .attach-btn {
+      background: none;
       border: none;
-      color: white;
-      border-radius: 10px;
-      padding: 12px 18px;
-      font-weight: bold;
+      color: #34d399;
       cursor: pointer;
-      transition: 0.2s ease;
+      font-size: 1.3rem;
+      padding: 8px;
+      transition: all 0.2s ease;
     }
 
-    .send-btn:hover {
-      filter: brightness(1.1);
+    .attach-btn:hover {
+      transform: scale(1.1);
     }
 
     .modal {
       position: fixed;
       inset: 0;
-      background: rgba(0,0,0,0.7);
+      background: rgba(0,0,0,0.6);
       display: none;
       justify-content: center;
       align-items: center;
-      padding: 18px;
-      z-index: 99;
+      padding: 20px;
+      z-index: 100;
     }
 
     .modal.show {
       display: flex;
     }
 
-    .modal-card {
-      width: min(100%, 460px);
+    .modal-content {
       background: rgba(15,23,42,0.98);
-      border: 2px solid rgba(16,185,129,0.4);
+      border: 1px solid rgba(16,185,129,0.3);
       border-radius: 16px;
       padding: 24px;
-      max-height: 90vh;
-      overflow-y: auto;
-    }
-
-    body.light-mode .modal-card {
-      background: rgba(255,255,255,0.95);
-      color: #1f2937;
-    }
-
-    .online-modal {
-      width: min(100%, 400px);
-      background: rgba(15,23,42,0.98);
-      border: 2px solid rgba(16,185,129,0.4);
-      border-radius: 16px;
-      padding: 24px;
+      max-width: 500px;
+      width: 100%;
       max-height: 80vh;
       overflow-y: auto;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
     }
 
-    body.light-mode .online-modal {
+    body.light-mode .modal-content {
       background: rgba(255,255,255,0.95);
     }
 
-    .modal-top {
+    .modal-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 18px;
+      margin-bottom: 20px;
     }
 
-    .modal-top h2 {
+    .modal-header h2 {
       color: #34d399;
+      font-size: 1.3rem;
     }
 
-    .close-btn {
+    .close-modal {
       background: none;
       border: none;
-      color: #94a3b8;
-      font-size: 1.5rem;
+      color: #9ca3af;
+      font-size: 1.8rem;
       cursor: pointer;
-      transition: 0.2s ease;
+      transition: color 0.2s ease;
     }
 
-    .close-btn:hover {
+    .close-modal:hover {
       color: #34d399;
-    }
-
-    .online-user-item {
-      background: rgba(255,255,255,0.05);
-      padding: 12px;
-      border-radius: 8px;
-      margin-bottom: 10px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    body.light-mode .online-user-item {
-      background: rgba(16,185,129,0.08);
-      color: #1f2937;
-    }
-
-    .online-status {
-      width: 10px;
-      height: 10px;
-      background: #10b981;
-      border-radius: 50%;
-    }
-
-    .tab-row {
-      display: flex;
-      gap: 8px;
-      margin-bottom: 18px;
-      flex-wrap: wrap;
-    }
-
-    .tab-btn {
-      flex: 1;
-      min-width: 120px;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(16,185,129,0.3);
-      color: #d1d5db;
-      border-radius: 8px;
-      padding: 10px;
-      cursor: pointer;
-      font-weight: bold;
-      transition: 0.2s ease;
-    }
-
-    body.light-mode .tab-btn {
-      background: rgba(16,185,129,0.08);
-      color: #4b5563;
-      border-color: rgba(16,185,129,0.4);
-    }
-
-    .tab-btn.active {
-      background: rgba(16,185,129,0.18);
-      border-color: rgba(16,185,129,0.6);
-      color: #bbf7d0;
-    }
-
-    body.light-mode .tab-btn.active {
-      background: rgba(16,185,129,0.2);
-      color: #059669;
-    }
-
-    .tab-pane {
-      display: none;
-    }
-
-    .tab-pane.active {
-      display: block;
     }
 
     .settings-section {
       margin-top: 20px;
-      padding-top: 20px;
-      border-top: 1px solid rgba(16,185,129,0.2);
     }
 
-    body.light-mode .settings-section {
-      border-top-color: rgba(16,185,129,0.3);
+    .settings-section:first-child {
+      margin-top: 0;
     }
 
     .settings-section h3 {
       color: #34d399;
+      font-size: 0.95rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
       margin-bottom: 12px;
-      font-size: 1.1rem;
+      opacity: 0.8;
     }
 
-    .setting-item {
+    .setting-row {
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 12px;
       background: rgba(255,255,255,0.03);
-      border-radius: 8px;
-      margin-bottom: 10px;
+      border-radius: 12px;
+      margin-bottom: 8px;
     }
 
-    body.light-mode .setting-item {
+    body.light-mode .setting-row {
       background: rgba(16,185,129,0.05);
     }
 
-    .setting-item label {
+    .setting-row label {
       margin: 0;
-      color: #d1d5db;
+      font-weight: 600;
       flex: 1;
-    }
-
-    body.light-mode .setting-item label {
-      color: #4b5563;
     }
 
     .toggle-switch {
       position: relative;
-      width: 50px;
-      height: 28px;
+      width: 48px;
+      height: 26px;
       background: rgba(255,255,255,0.1);
-      border-radius: 14px;
-      cursor: pointer;
       border: 1px solid rgba(16,185,129,0.3);
-      transition: 0.2s ease;
+      border-radius: 13px;
+      cursor: pointer;
+      transition: all 0.2s ease;
     }
 
-    .toggle-switch.on {
+    .toggle-switch.active {
       background: rgba(16,185,129,0.4);
       border-color: rgba(16,185,129,0.6);
     }
 
     .toggle-switch::after {
-      content: '';
+      content: "";
       position: absolute;
-      width: 22px;
-      height: 22px;
+      width: 20px;
+      height: 20px;
       background: white;
       border-radius: 50%;
       top: 2px;
       left: 2px;
-      transition: 0.2s ease;
+      transition: left 0.2s ease;
     }
 
-    .toggle-switch.on::after {
-      left: 26px;
+    .toggle-switch.active::after {
+      left: 24px;
     }
 
-    .danger-zone {
-      margin-top: 20px;
-      padding: 12px;
-      background: rgba(239,68,68,0.1);
-      border: 1px solid rgba(239,68,68,0.3);
-      border-radius: 8px;
+    .online-users-list {
+      background: rgba(255,255,255,0.03);
+      border-radius: 12px;
+      max-height: 400px;
+      overflow-y: auto;
     }
 
-    .danger-zone h3 {
-      color: #fca5a5;
-      margin-bottom: 10px;
+    .user-item {
+      padding: 12px 16px;
+      border-bottom: 1px solid rgba(16,185,129,0.1);
+      display: flex;
+      align-items: center;
+      gap: 10px;
     }
 
-    .delete-btn {
-      width: 100%;
-      background: rgba(239,68,68,0.2);
-      color: #fca5a5;
-      border: 1px solid rgba(239,68,68,0.4);
-      padding: 10px;
-      border-radius: 8px;
+    .user-item:last-child {
+      border-bottom: none;
+    }
+
+    body.light-mode .user-item {
+      border-bottom-color: rgba(16,185,129,0.15);
+    }
+
+    .online-dot {
+      width: 8px;
+      height: 8px;
+      background: #10b981;
+      border-radius: 50%;
+    }
+
+    .user-item .username {
+      flex: 1;
+      font-weight: 600;
+    }
+
+    .user-item .badge {
+      background: rgba(139,92,246,0.2);
+      color: #e9d5ff;
+      padding: 4px 8px;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      font-weight: 700;
+    }
+
+    .image-viewer {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.9);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 101;
       cursor: pointer;
-      font-weight: bold;
-      transition: 0.2s ease;
     }
 
-    .delete-btn:hover {
-      background: rgba(239,68,68,0.3);
+    .image-viewer.show {
+      display: flex;
     }
 
-    @media (max-width: 640px) {
-      .msg-bubble {
+    .image-viewer img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 12px;
+      object-fit: contain;
+    }
+
+    @media (max-width: 768px) {
+      .message-bubble {
         max-width: 85%;
       }
-      .chat-header {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-      .header-center {
-        width: 100%;
-        flex-direction: column;
-      }
-      .input-controls {
-        flex-wrap: wrap;
+      .chat-screen {
+        padding: 0;
       }
     }
   </style>
 </head>
 <body>
+  <!-- Auth Screen -->
   <div class="auth-screen" id="authScreen">
     <div class="auth-box">
       <h1>Chat</h1>
@@ -735,7 +741,7 @@ Released under the MIT license: http://jsbin.mit-license.org
           <input type="password" id="signupConfirm" placeholder="Confirm password" />
         </div>
         <button class="btn" onclick="signup()">Sign Up</button>
-        <div class="toggle">
+        <div class="toggle-auth">
           Already have an account?
           <button onclick="toggleForm('login')">Log In</button>
         </div>
@@ -751,7 +757,7 @@ Released under the MIT license: http://jsbin.mit-license.org
           <input type="password" id="loginPassword" placeholder="Enter password" />
         </div>
         <button class="btn" onclick="login()">Log In</button>
-        <div class="toggle">
+        <div class="toggle-auth">
           Need an account?
           <button onclick="toggleForm('signup')">Sign Up</button>
         </div>
@@ -759,142 +765,121 @@ Released under the MIT license: http://jsbin.mit-license.org
     </div>
   </div>
 
+  <!-- Chat Screen -->
   <div class="chat-screen" id="chatScreen">
     <div class="chat-header">
-      <h1>Chat</h1>
-      <div class="header-center">
-        <div class="time-display" id="timeDisplay">00:00</div>
-      </div>
+      <h1>💬 Chat</h1>
+      <div class="header-time" id="timeDisplay">12:00:00 AM</div>
       <div class="header-actions">
-        <span class="username-badge" id="headerUsername">Guest</span>
-        <button class="small-btn theme-btn" onclick="toggleTheme()">🌙 Dark</button>
-        <button class="small-btn settings-btn" onclick="openSettings()">⚙️ Settings</button>
-        <button class="small-btn logout-btn" onclick="logout()">Log Out</button>
+        <span class="user-badge" id="userBadge">Guest</span>
+        <button class="icon-btn" onclick="toggleTheme()" title="Toggle theme">
+          <span id="themeIcon">🌙</span>
+        </button>
+        <button class="icon-btn" onclick="openSettings()" title="Settings">⚙️</button>
+        <button class="logout-btn" onclick="logout()">Log Out</button>
       </div>
     </div>
 
     <div class="chat-body">
-      <div class="online-users-header" id="onlineUsers" onclick="openOnlineModal()">
-        👥 Online users: 0 (Click to view)
+      <div class="online-info" onclick="openOnlineUsers()">
+        👥 <span id="onlineCount">0</span> online • Click to view
       </div>
-      <div class="messages" id="messages"></div>
-      <div class="input-area">
-        <div class="input-controls">
+
+      <div class="messages-container" id="messagesContainer">
+        <div class="empty-state">Start a conversation</div>
+      </div>
+    </div>
+
+    <div class="input-section">
+      <div class="input-row">
+        <button class="attach-btn" onclick="document.getElementById('fileInput').click()" title="Attach file">📎</button>
+        <div class="input-field">
           <input type="text" id="messageInput" placeholder="Type a message..." />
-          <input type="file" id="fileInput" class="file-input" accept="image/*,video/*,.pdf,.doc,.docx,.txt" />
-          <button class="upload-btn" onclick="document.getElementById('fileInput').click()">📎 Attach</button>
-          <button class="send-btn" onclick="sendMessage()">Send</button>
+          <input type="file" id="fileInput" class="file-input" />
         </div>
+        <button class="action-btn" onclick="sendMessage()" title="Send">➤</button>
       </div>
     </div>
   </div>
 
   <!-- Settings Modal -->
   <div class="modal" id="settingsModal">
-    <div class="modal-card">
-      <div class="modal-top">
+    <div class="modal-content">
+      <div class="modal-header">
         <h2>⚙️ Settings</h2>
-        <button class="close-btn" onclick="closeSettings()">✕</button>
+        <button class="close-modal" onclick="closeSettings()">✕</button>
       </div>
 
       <div id="settingsError" class="error-box"></div>
       <div id="settingsSuccess" class="success-box"></div>
 
-      <div class="tab-row">
-        <button class="tab-btn active" onclick="showTab('accountTab')">Account</button>
-        <button class="tab-btn" onclick="showTab('appTab')">App Settings</button>
-      </div>
-
-      <div id="accountTab" class="tab-pane active">
-        <div class="settings-section">
-          <h3>Change Username</h3>
-          <div class="form-group">
-            <label>Current Password</label>
-            <input type="password" id="currentPasswordForUsername" placeholder="Type your current password" />
-          </div>
-          <div class="form-group">
-            <label>New Username</label>
-            <input type="text" id="newUsernameInput" placeholder="Enter a new username" />
-          </div>
-          <button class="btn" onclick="changeUsername()">Update Username</button>
-        </div>
-
-        <div class="settings-section">
-          <h3>Change Password</h3>
-          <div class="form-group">
-            <label>Current Password</label>
-            <input type="password" id="oldPasswordInput" placeholder="Type your current password" />
-          </div>
-          <div class="form-group">
-            <label>New Password</label>
-            <input type="password" id="newPasswordInput" placeholder="Enter a new password" />
-          </div>
-          <div class="form-group">
-            <label>Confirm New Password</label>
-            <input type="password" id="confirmPasswordInput" placeholder="Confirm the new password" />
-          </div>
-          <button class="btn" onclick="changePassword()">Update Password</button>
-        </div>
-
-        <div class="danger-zone">
-          <h3>⚠️ Danger Zone</h3>
-          <p style="color: #cbd5e1; font-size: 0.9rem; margin-bottom: 12px;">Delete your account permanently. This cannot be undone.</p>
-          <button class="delete-btn" onclick="deleteAccount()">Delete Account</button>
+      <!-- Account Settings -->
+      <div class="settings-section">
+        <h3>Account</h3>
+        <div class="form-group">
+          <label>Change Username</label>
+          <input type="password" id="passForUsername" placeholder="Current password" />
+          <input type="text" id="newUsername" placeholder="New username" style="margin-top: 8px;" />
+          <button class="btn" onclick="changeUsername()" style="margin-top: 8px;">Update</button>
         </div>
       </div>
 
-      <div id="appTab" class="tab-pane">
-        <div class="settings-section">
-          <h3>Display Settings</h3>
-          
-          <div class="setting-item">
-            <label>Show Timestamps</label>
-            <div class="toggle-switch on" onclick="toggleTimestamps()"></div>
-          </div>
-
-          <div class="setting-item">
-            <label>Sound Notifications</label>
-            <div class="toggle-switch on" onclick="toggleSoundNotifications()"></div>
-          </div>
+      <div class="settings-section">
+        <div class="form-group">
+          <label>Change Password</label>
+          <input type="password" id="oldPass" placeholder="Current password" />
+          <input type="password" id="newPass" placeholder="New password" style="margin-top: 8px;" />
+          <input type="password" id="confirmPass" placeholder="Confirm password" style="margin-top: 8px;" />
+          <button class="btn" onclick="changePassword()" style="margin-top: 8px;">Update</button>
         </div>
+      </div>
 
-        <div class="settings-section">
-          <h3>About</h3>
-          <div style="color: #cbd5e1; font-size: 0.9rem; line-height: 1.6;">
-            <p><strong>Chat App v2.0</strong></p>
-            <p>A real-time chat application with file sharing.</p>
-            <p style="margin-top: 12px; font-size: 0.85rem;">All data is stored locally in your browser.</p>
-          </div>
+      <!-- Display Settings -->
+      <div class="settings-section">
+        <h3>Display</h3>
+        <div class="setting-row">
+          <label>Timestamps</label>
+          <div class="toggle-switch active" onclick="toggleTimestamps()"></div>
         </div>
+        <div class="setting-row">
+          <label>Sound Notifications</label>
+          <div class="toggle-switch active" onclick="toggleNotifications()"></div>
+        </div>
+      </div>
+
+      <!-- Danger Zone -->
+      <div class="settings-section">
+        <h3>Danger</h3>
+        <button class="btn" style="background: #dc2626; margin-top: 8px;" onclick="deleteAccount()">Delete Account</button>
       </div>
     </div>
   </div>
 
   <!-- Online Users Modal -->
-  <div class="modal" id="onlineModal">
-    <div class="online-modal">
-      <div class="modal-top">
+  <div class="modal" id="onlineUsersModal">
+    <div class="modal-content">
+      <div class="modal-header">
         <h2>👥 Online Users</h2>
-        <button class="close-btn" onclick="closeOnlineModal()">✕</button>
+        <button class="close-modal" onclick="closeOnlineUsers()">✕</button>
       </div>
-      <div id="onlineUsersList"></div>
+      <div class="online-users-list" id="onlineUsersList"></div>
     </div>
   </div>
 
-  <!-- Image Viewer Modal -->
-  <div class="modal" id="imageViewerModal" onclick="closeImageViewer()">
-    <img id="viewerImage" style="max-width: 90%; max-height: 90%; border-radius: 12px; cursor: pointer;" />
+  <!-- Image Viewer -->
+  <div class="image-viewer" id="imageViewer" onclick="closeImageViewer()">
+    <img id="viewerImg" />
   </div>
 
   <script>
     const USERS_KEY = "chat_users";
     const CURRENT_USER_KEY = "chat_current_user";
-    const CHAT_KEY = "chat_messages";
+    const MESSAGES_KEY = "chat_messages";
     const SETTINGS_KEY = "chat_settings";
     const THEME_KEY = "chat_theme";
 
     let users = JSON.parse(localStorage.getItem(USERS_KEY) || "{}");
-    let currentUser = localStorage.getItem(CURRENT_USER_KEY) || null;
+    let currentUser = localStorage.getItem(CURRENT_USER_KEY);
     let settings = JSON.parse(localStorage.getItem(SETTINGS_KEY) || '{"showTimestamps": true, "soundNotifications": true}');
     let isDarkMode = localStorage.getItem(THEME_KEY) !== "light";
 
@@ -903,11 +888,11 @@ Released under the MIT license: http://jsbin.mit-license.org
     }
 
     function getMessages() {
-      return JSON.parse(localStorage.getItem(CHAT_KEY) || "[]");
+      return JSON.parse(localStorage.getItem(MESSAGES_KEY) || "[]");
     }
 
-    function saveMessages(messages) {
-      localStorage.setItem(CHAT_KEY, JSON.stringify(messages));
+    function saveMessages(msgs) {
+      localStorage.setItem(MESSAGES_KEY, JSON.stringify(msgs));
     }
 
     function saveSettings() {
@@ -916,374 +901,38 @@ Released under the MIT license: http://jsbin.mit-license.org
 
     function updateTime() {
       const now = new Date();
-      const hours = String(now.getHours()).padStart(2, '0');
-      const minutes = String(now.getMinutes()).padStart(2, '0');
-      document.getElementById('timeDisplay').textContent = `${hours}:${minutes}`;
+      let h = now.getHours();
+      const m = String(now.getMinutes()).padStart(2, "0");
+      const s = String(now.getSeconds()).padStart(2, "0");
+      const ampm = h >= 12 ? "PM" : "AM";
+      h = h % 12 || 12;
+      document.getElementById("timeDisplay").textContent = `${h}:${m}:${s} ${ampm}`;
     }
 
     setInterval(updateTime, 1000);
+    updateTime();
 
     function toggleTheme() {
       isDarkMode = !isDarkMode;
       localStorage.setItem(THEME_KEY, isDarkMode ? "dark" : "light");
-      document.body.classList.toggle('light-mode', !isDarkMode);
-      updateThemeButton();
-    }
-
-    function updateThemeButton() {
-      const btn = document.querySelector('.theme-btn');
-      btn.textContent = isDarkMode ? '🌙 Dark' : '☀️ Light';
+      document.body.classList.toggle("light-mode", !isDarkMode);
+      document.getElementById("themeIcon").textContent = isDarkMode ? "🌙" : "☀️";
     }
 
     function applyTheme() {
       if (!isDarkMode) {
-        document.body.classList.add('light-mode');
+        document.body.classList.add("light-mode");
+        document.getElementById("themeIcon").textContent = "☀️";
+      } else {
+        document.getElementById("themeIcon").textContent = "🌙";
       }
-      updateThemeButton();
     }
 
-    function showAuthError(msg) {
+    function showError(msg) {
       const box = document.getElementById("authError");
       box.textContent = msg;
       box.classList.add("show");
       setTimeout(() => box.classList.remove("show"), 4000);
-    }
-
-    function showAuthSuccess(msg) {
-      const box = document.getElementById("authSuccess");
-      box.textContent = msg;
-      box.classList.add("show");
-      setTimeout(() => box.classList.remove("show"), 3000);
-    }
-
-    function hideAuthStatus() {
-      document.getElementById("authError").classList.remove("show");
-      document.getElementById("authSuccess").classList.remove("show");
-    }
-
-    function toggleForm(form) {
-      hideAuthStatus();
-      const signup = document.getElementById("signupForm");
-      const login = document.getElementById("loginForm");
-
-      if (form === "signup") {
-        signup.classList.remove("hidden");
-        login.classList.add("hidden");
-      } else {
-        signup.classList.add("hidden");
-        login.classList.remove("hidden");
-      }
-    }
-
-    function signup() {
-      const username = document.getElementById("signupUsername").value.trim();
-      const password = document.getElementById("signupPassword").value;
-      const confirm = document.getElementById("signupConfirm").value;
-
-      if (!username || !password || !confirm) {
-        showAuthError("All fields are required.");
-        return;
-      }
-
-      if (password.length < 4) {
-        showAuthError("Password must be at least 4 characters.");
-        return;
-      }
-
-      if (password !== confirm) {
-        showAuthError("Passwords do not match.");
-        return;
-      }
-
-      if (users[username]) {
-        showAuthError("That username already exists.");
-        return;
-      }
-
-      users[username] = password;
-      saveUsers();
-
-      currentUser = username;
-      localStorage.setItem(CURRENT_USER_KEY, currentUser);
-      showChat();
-    }
-
-    function login() {
-      const username = document.getElementById("loginUsername").value.trim();
-      const password = document.getElementById("loginPassword").value;
-
-      if (!username || !password) {
-        showAuthError("Username and password are required.");
-        return;
-      }
-
-      if (!users[username] || users[username] !== password) {
-        showAuthError("Incorrect username or password.");
-        return;
-      }
-
-      currentUser = username;
-      localStorage.setItem(CURRENT_USER_KEY, currentUser);
-      showChat();
-    }
-
-    function logout() {
-      currentUser = null;
-      localStorage.removeItem(CURRENT_USER_KEY);
-      showAuthScreen();
-    }
-
-    function showAuthScreen() {
-      document.getElementById("authScreen").style.display = "flex";
-      document.getElementById("chatScreen").style.display = "none";
-      document.getElementById("signupForm").classList.remove("hidden");
-      document.getElementById("loginForm").classList.add("hidden");
-      document.getElementById("signupUsername").value = "";
-      document.getElementById("signupPassword").value = "";
-      document.getElementById("signupConfirm").value = "";
-      document.getElementById("loginUsername").value = "";
-      document.getElementById("loginPassword").value = "";
-    }
-
-    function showChat() {
-      document.getElementById("authScreen").style.display = "none";
-      document.getElementById("chatScreen").style.display = "block";
-      document.getElementById("headerUsername").textContent = currentUser;
-      renderChat();
-      renderOnlineUsers();
-      updateTime();
-    }
-
-    function renderOnlineUsers() {
-      const count = Object.keys(users).length;
-      document.getElementById("onlineUsers").textContent = `👥 Online users: ${count} (Click to view)`;
-    }
-
-    function openOnlineModal() {
-      const list = document.getElementById("onlineUsersList");
-      const names = Object.keys(users);
-      list.innerHTML = "";
-
-      if (names.length === 0) {
-        list.innerHTML = '<p style="color: #cbd5e1;">No users online.</p>';
-        document.getElementById("onlineModal").classList.add("show");
-        return;
-      }
-
-      for (const name of names) {
-        const item = document.createElement("div");
-        item.className = "online-user-item";
-        item.innerHTML = `
-          <div class="online-status"></div>
-          <span>${name}${name === currentUser ? ' (You)' : ''}</span>
-        `;
-        list.appendChild(item);
-      }
-
-      document.getElementById("onlineModal").classList.add("show");
-    }
-
-    function closeOnlineModal() {
-      document.getElementById("onlineModal").classList.remove("show");
-    }
-
-    function renderChat() {
-      const messages = getMessages();
-      const container = document.getElementById("messages");
-      container.innerHTML = "";
-
-      if (!messages.length) {
-        const empty = document.createElement("div");
-        empty.style.color = "#cbd5e1";
-        empty.style.padding = "12px";
-        empty.textContent = "No messages yet. Start the chat!";
-        container.appendChild(empty);
-        return;
-      }
-
-      for (const msg of messages) {
-        const row = document.createElement("div");
-        row.className = "msg-row " + (msg.user === currentUser ? "me" : "other");
-
-        const bubble = document.createElement("div");
-        bubble.className = "msg-bubble";
-
-        const meta = document.createElement("div");
-        meta.className = "msg-meta";
-        meta.textContent = `${msg.user} • ${settings.showTimestamps ? formatTime(msg.time) : ""}`;
-
-        const text = document.createElement("div");
-        text.textContent = msg.text;
-
-        bubble.appendChild(meta);
-        bubble.appendChild(text);
-
-        if (msg.type === "image") {
-          const img = document.createElement("img");
-          img.className = "msg-image";
-          img.src = msg.content;
-          img.onclick = () => viewImage(msg.content);
-          bubble.appendChild(img);
-        } else if (msg.type === "video") {
-          const video = document.createElement("video");
-          video.className = "msg-video";
-          video.src = msg.content;
-          video.controls = true;
-          bubble.appendChild(video);
-        } else if (msg.type === "file") {
-          const file = document.createElement("a");
-          file.className = "msg-file";
-          file.href = msg.content;
-          file.download = msg.fileName || "file";
-          file.textContent = `📄 ${msg.fileName || "File"}`;
-          bubble.appendChild(file);
-        }
-
-        row.appendChild(bubble);
-        container.appendChild(row);
-      }
-
-      container.scrollTop = container.scrollHeight;
-    }
-
-    function formatTime(iso) {
-      const d = new Date(iso);
-      return d.toLocaleTimeString([], { hour: "numeric", minute: "2-digit" });
-    }
-
-    function sendMessage() {
-      const input = document.getElementById("messageInput");
-      const text = input.value.trim();
-
-      if (!text) return;
-
-      const messages = getMessages();
-      messages.push({
-        user: currentUser,
-        text,
-        type: "text",
-        time: new Date().toISOString()
-      });
-
-      saveMessages(messages);
-      renderChat();
-      input.value = "";
-
-      if (settings.soundNotifications) {
-        playNotificationSound();
-      }
-    }
-
-    document.getElementById("fileInput").addEventListener("change", (e) => {
-      const file = e.target.files[0];
-      if (!file) return;
-
-      const reader = new FileReader();
-      reader.onload = (event) => {
-        const messages = getMessages();
-        let msgType = "file";
-        let content = event.target.result;
-
-        if (file.type.startsWith("image/")) {
-          msgType = "image";
-        } else if (file.type.startsWith("video/")) {
-          msgType = "video";
-        }
-
-        messages.push({
-          user: currentUser,
-          text: `Shared a ${msgType}`,
-          type: msgType,
-          content,
-          fileName: file.name,
-          time: new Date().toISOString()
-        });
-
-        saveMessages(messages);
-        renderChat();
-        document.getElementById("fileInput").value = "";
-
-        if (settings.soundNotifications) {
-          playNotificationSound();
-        }
-      };
-
-      reader.readAsDataURL(file);
-    });
-
-    function viewImage(src) {
-      document.getElementById("viewerImage").src = src;
-      document.getElementById("imageViewerModal").classList.add("show");
-    }
-
-    function closeImageViewer() {
-      document.getElementById("imageViewerModal").classList.remove("show");
-    }
-
-    function playNotificationSound() {
-      const audioContext = new (window.AudioContext || window.webkitAudioContext)();
-      const oscillator = audioContext.createOscillator();
-      const gainNode = audioContext.createGain();
-      
-      oscillator.connect(gainNode);
-      gainNode.connect(audioContext.destination);
-      
-      oscillator.frequency.value = 800;
-      oscillator.type = 'sine';
-      
-      gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
-      gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.1);
-      
-      oscillator.start(audioContext.currentTime);
-      oscillator.stop(audioContext.currentTime + 0.1);
-    }
-
-    document.getElementById("messageInput").addEventListener("keydown", (e) => {
-      if (e.key === "Enter") {
-        sendMessage();
-      }
-    });
-
-    function openSettings() {
-      document.getElementById("settingsModal").classList.add("show");
-      clearSettingsStatus();
-    }
-
-    function closeSettings() {
-      document.getElementById("settingsModal").classList.remove("show");
-      clearSettingsStatus();
-      clearSettingsFields();
-    }
-
-    function clearSettingsStatus() {
-      document.getElementById("settingsError").classList.remove("show");
-      document.getElementById("settingsSuccess").classList.remove("show");
-    }
-
-    function clearSettingsFields() {
-      document.getElementById("currentPasswordForUsername").value = "";
-      document.getElementById("newUsernameInput").value = "";
-      document.getElementById("oldPasswordInput").value = "";
-      document.getElementById("newPasswordInput").value = "";
-      document.getElementById("confirmPasswordInput").value = "";
-    }
-
-    function showTab(tabId) {
-      document.querySelectorAll(".tab-btn").forEach(btn => btn.classList.remove("active"));
-      document.querySelectorAll(".tab-pane").forEach(pane => pane.classList.remove("active"));
-
-      document.getElementById(tabId).classList.add("active");
-
-      const matches = {
-        accountTab: "Account",
-        appTab: "App Settings"
-      };
-
-      document.querySelectorAll(".tab-btn").forEach(btn => {
-        if (btn.textContent === matches[tabId]) {
-          btn.classList.add("active");
-        }
-      });
     }
 
     function showSettingsError(msg) {
@@ -1300,127 +949,346 @@ Released under the MIT license: http://jsbin.mit-license.org
       setTimeout(() => box.classList.remove("show"), 3000);
     }
 
+    function toggleForm(form) {
+      document.getElementById("signupForm").classList.toggle("hidden", form !== "signup");
+      document.getElementById("loginForm").classList.toggle("hidden", form !== "login");
+      document.getElementById("authError").classList.remove("show");
+    }
+
+    function signup() {
+      const username = document.getElementById("signupUsername").value.trim();
+      const password = document.getElementById("signupPassword").value;
+      const confirm = document.getElementById("signupConfirm").value;
+
+      if (!username || !password || !confirm) {
+        showError("All fields required");
+        return;
+      }
+
+      if (password.length < 4) {
+        showError("Password must be 4+ characters");
+        return;
+      }
+
+      if (password !== confirm) {
+        showError("Passwords don't match");
+        return;
+      }
+
+      if (users[username]) {
+        showError("Username exists");
+        return;
+      }
+
+      users[username] = password;
+      saveUsers();
+      currentUser = username;
+      localStorage.setItem(CURRENT_USER_KEY, currentUser);
+      showChat();
+    }
+
+    function login() {
+      const username = document.getElementById("loginUsername").value.trim();
+      const password = document.getElementById("loginPassword").value;
+
+      if (!username || !password) {
+        showError("Username and password required");
+        return;
+      }
+
+      if (!users[username] || users[username] !== password) {
+        showError("Invalid credentials");
+        return;
+      }
+
+      currentUser = username;
+      localStorage.setItem(CURRENT_USER_KEY, currentUser);
+      showChat();
+    }
+
+    function logout() {
+      if (!confirm("Log out?")) return;
+      currentUser = null;
+      localStorage.removeItem(CURRENT_USER_KEY);
+      document.getElementById("authScreen").style.display = "flex";
+      document.getElementById("chatScreen").style.display = "none";
+      document.getElementById("signupForm").classList.remove("hidden");
+      document.getElementById("loginForm").classList.add("hidden");
+    }
+
+    function showChat() {
+      document.getElementById("authScreen").style.display = "none";
+      document.getElementById("chatScreen").style.display = "flex";
+      document.getElementById("userBadge").textContent = currentUser;
+      renderMessages();
+      updateOnlineCount();
+    }
+
+    function renderMessages() {
+      const msgs = getMessages();
+      const container = document.getElementById("messagesContainer");
+
+      if (!msgs.length) {
+        container.innerHTML = '<div class="empty-state">Start a conversation</div>';
+        return;
+      }
+
+      container.innerHTML = msgs.map(msg => {
+        const isOwn = msg.user === currentUser;
+        const time = settings.showTimestamps ? formatTime(msg.time) : "";
+
+        let content = `<div class="message-info">${msg.user}${time ? " • " + time : ""}</div>
+                       <div class="message-text">${msg.text}</div>`;
+
+        if (msg.type === "image") {
+          content += `<img src="${msg.content}" class="message-image" onclick="viewImage('${msg.content.replace(/'/g, "\\'")}')">`;
+        } else if (msg.type === "video") {
+          content += `<video controls class="message-video"><source src="${msg.content}"></video>`;
+        } else if (msg.type === "file") {
+          content += `<a href="${msg.content}" download="${msg.fileName}" class="message-file">📁 ${msg.fileName}</a>`;
+        }
+
+        return `<div class="message-group ${isOwn ? "sent" : ""}">
+                  <div class="message-bubble">${content}</div>
+                </div>`;
+      }).join("");
+
+      container.scrollTop = container.scrollHeight;
+    }
+
+    function formatTime(iso) {
+      const d = new Date(iso);
+      let h = d.getHours();
+      const m = String(d.getMinutes()).padStart(2, "0");
+      const s = String(d.getSeconds()).padStart(2, "0");
+      const ampm = h >= 12 ? "PM" : "AM";
+      h = h % 12 || 12;
+      return `${h}:${m}:${s} ${ampm}`;
+    }
+
+    function sendMessage() {
+      const input = document.getElementById("messageInput");
+      const text = input.value.trim();
+
+      if (!text) return;
+
+      const msgs = getMessages();
+      msgs.push({
+        user: currentUser,
+        text,
+        type: "text",
+        time: new Date().toISOString()
+      });
+
+      saveMessages(msgs);
+      renderMessages();
+      input.value = "";
+
+      if (settings.soundNotifications) playSound();
+    }
+
+    document.getElementById("fileInput").addEventListener("change", (e) => {
+      const file = e.target.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        const msgs = getMessages();
+        let type = "file";
+
+        if (file.type.startsWith("image/")) type = "image";
+        else if (file.type.startsWith("video/")) type = "video";
+
+        msgs.push({
+          user: currentUser,
+          text: `Shared a ${type}`,
+          type,
+          content: event.target.result,
+          fileName: file.name,
+          time: new Date().toISOString()
+        });
+
+        saveMessages(msgs);
+        renderMessages();
+        document.getElementById("fileInput").value = "";
+
+        if (settings.soundNotifications) playSound();
+      };
+
+      reader.readAsDataURL(file);
+    });
+
+    function viewImage(src) {
+      document.getElementById("viewerImg").src = src;
+      document.getElementById("imageViewer").classList.add("show");
+    }
+
+    function closeImageViewer() {
+      document.getElementById("imageViewer").classList.remove("show");
+    }
+
+    function playSound() {
+      const ctx = new (window.AudioContext || window.webkitAudioContext)();
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      osc.frequency.value = 800;
+      gain.gain.setValueAtTime(0.3, ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.1);
+      osc.start(ctx.currentTime);
+      osc.stop(ctx.currentTime + 0.1);
+    }
+
+    document.getElementById("messageInput").addEventListener("keydown", (e) => {
+      if (e.key === "Enter") sendMessage();
+    });
+
+    function updateOnlineCount() {
+      const count = Object.keys(users).length;
+      document.getElementById("onlineCount").textContent = count;
+    }
+
+    function openOnlineUsers() {
+      const list = document.getElementById("onlineUsersList");
+      const names = Object.keys(users);
+
+      if (!names.length) {
+        list.innerHTML = "<div class='user-item'>No users online</div>";
+      } else {
+        list.innerHTML = names.map(name => `
+          <div class="user-item">
+            <div class="online-dot"></div>
+            <span class="username">${name}</span>
+            ${name === currentUser ? '<span class="badge">You</span>' : ""}
+          </div>
+        `).join("");
+      }
+
+      document.getElementById("onlineUsersModal").classList.add("show");
+    }
+
+    function closeOnlineUsers() {
+      document.getElementById("onlineUsersModal").classList.remove("show");
+    }
+
+    function openSettings() {
+      document.getElementById("settingsModal").classList.add("show");
+    }
+
+    function closeSettings() {
+      document.getElementById("settingsModal").classList.remove("show");
+    }
+
     function changeUsername() {
-      const password = document.getElementById("currentPasswordForUsername").value;
-      const newUsername = document.getElementById("newUsernameInput").value.trim();
+      const pass = document.getElementById("passForUsername").value;
+      const newUname = document.getElementById("newUsername").value.trim();
 
-      if (!password || !newUsername) {
-        showSettingsError("Please fill in all fields.");
+      if (!pass || !newUname) {
+        showSettingsError("Fill all fields");
         return;
       }
 
-      if (users[currentUser] !== password) {
-        showSettingsError("Current password is incorrect.");
+      if (users[currentUser] !== pass) {
+        showSettingsError("Wrong password");
         return;
       }
 
-      if (newUsername === currentUser) {
-        showSettingsError("That is already your username.");
+      if (users[newUname]) {
+        showSettingsError("Username taken");
         return;
       }
 
-      if (users[newUsername]) {
-        showSettingsError("That username is already taken.");
-        return;
-      }
-
-      users[newUsername] = users[currentUser];
+      users[newUname] = users[currentUser];
       delete users[currentUser];
       saveUsers();
 
-      const messages = getMessages();
-      for (const msg of messages) {
-        if (msg.user === currentUser) {
-          msg.user = newUsername;
-        }
-      }
-      saveMessages(messages);
+      const msgs = getMessages();
+      msgs.forEach(m => {
+        if (m.user === currentUser) m.user = newUname;
+      });
+      saveMessages(msgs);
 
-      currentUser = newUsername;
+      currentUser = newUname;
       localStorage.setItem(CURRENT_USER_KEY, currentUser);
+      document.getElementById("userBadge").textContent = currentUser;
 
-      showSettingsSuccess("Username changed successfully!");
-      clearSettingsFields();
-      renderChat();
-      renderOnlineUsers();
-      document.getElementById("headerUsername").textContent = currentUser;
+      showSettingsSuccess("Username updated!");
+      document.getElementById("passForUsername").value = "";
+      document.getElementById("newUsername").value = "";
+      renderMessages();
+      updateOnlineCount();
     }
 
     function changePassword() {
-      const oldPass = document.getElementById("oldPasswordInput").value;
-      const newPass = document.getElementById("newPasswordInput").value;
-      const confirmPass = document.getElementById("confirmPasswordInput").value;
+      const old = document.getElementById("oldPass").value;
+      const newp = document.getElementById("newPass").value;
+      const conf = document.getElementById("confirmPass").value;
 
-      if (!oldPass || !newPass || !confirmPass) {
-        showSettingsError("Please fill in all fields.");
+      if (!old || !newp || !conf) {
+        showSettingsError("Fill all fields");
         return;
       }
 
-      if (users[currentUser] !== oldPass) {
-        showSettingsError("Current password is incorrect.");
+      if (users[currentUser] !== old) {
+        showSettingsError("Wrong password");
         return;
       }
 
-      if (newPass.length < 4) {
-        showSettingsError("New password must be at least 4 characters.");
+      if (newp.length < 4) {
+        showSettingsError("Password 4+ characters");
         return;
       }
 
-      if (newPass !== confirmPass) {
-        showSettingsError("New passwords do not match.");
+      if (newp !== conf) {
+        showSettingsError("Passwords don't match");
         return;
       }
 
-      users[currentUser] = newPass;
+      users[currentUser] = newp;
       saveUsers();
-      showSettingsSuccess("Password changed successfully!");
-      clearSettingsFields();
-    }
-
-    function deleteAccount() {
-      const confirmed = confirm(`Are you sure you want to delete your account "${currentUser}"? This cannot be undone.`);
-      
-      if (!confirmed) return;
-
-      delete users[currentUser];
-      saveUsers();
-
-      const messages = getMessages();
-      const filtered = messages.filter(msg => msg.user !== currentUser);
-      saveMessages(filtered);
-
-      currentUser = null;
-      localStorage.removeItem(CURRENT_USER_KEY);
-
-      closeSettings();
-      showAuthScreen();
-      showAuthSuccess("Account deleted successfully.");
+      showSettingsSuccess("Password updated!");
+      document.getElementById("oldPass").value = "";
+      document.getElementById("newPass").value = "";
+      document.getElementById("confirmPass").value = "";
     }
 
     function toggleTimestamps() {
       settings.showTimestamps = !settings.showTimestamps;
       saveSettings();
-      renderChat();
-      showSettingsSuccess("Display settings updated!");
+      renderMessages();
+      document.querySelector('[onclick="toggleTimestamps()"]').classList.toggle("active");
     }
 
-    function toggleSoundNotifications() {
+    function toggleNotifications() {
       settings.soundNotifications = !settings.soundNotifications;
       saveSettings();
-      showSettingsSuccess("Notification settings updated!");
+      document.querySelector('[onclick="toggleNotifications()"]').classList.toggle("active");
     }
 
-    function checkLogin() {
-      applyTheme();
-      if (currentUser && users[currentUser]) {
-        showChat();
-      } else {
-        showAuthScreen();
-      }
+    function deleteAccount() {
+      if (!confirm(`Delete account "${currentUser}"? This cannot be undone.`)) return;
+
+      delete users[currentUser];
+      saveUsers();
+
+      const msgs = getMessages();
+      saveMessages(msgs.filter(m => m.user !== currentUser));
+
+      currentUser = null;
+      localStorage.removeItem(CURRENT_USER_KEY);
+      closeSettings();
+      logout();
     }
 
-    window.onload = checkLogin;
+    applyTheme();
+
+    if (currentUser && users[currentUser]) {
+      showChat();
+    } else {
+      document.getElementById("authScreen").style.display = "flex";
+      document.getElementById("chatScreen").style.display = "none";
+    }
   </script>
-<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v31edd6df95cf4e85bb4c19e7a9bdbcba1788362987495" integrity="sha512-iIg7k2xntmwu6/uSb5tpc/hySgZc4eoL31yB29W6tJFo2akwjPWcEqnCEdJvGexCL0KEQwVYv5BlowfhVz26hg==" data-cf-beacon='{"version":"2024.11.0","token":"480c9d8468c44ad3bed3c74fbcc6d6f3","r":1,"spa":2}' crossorigin="anonymous"></script>
 </body>
 </html>
