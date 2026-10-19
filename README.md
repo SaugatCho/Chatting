@@ -53,3 +53,15 @@ GitHub Pages changes can take a little time to appear after merging a pull reque
 - Browser storage can be cleared by the user, browser settings, or private-browsing sessions.
 - Large or numerous attachments can fill browser storage; keep attachments small and export backups.
 - Old accounts created by the previous version may have been stored as plaintext locally. On successful login, the app upgrades that account record to a salted password hash. This is only a local browser safeguard, not a replacement for server-side authentication.
+
+
+## Project files
+
+- `index.html` — page structure and UI
+- `style.css` — layout, theme, and responsive styles
+- `app.js` — local account/message behaviour and backup tools
+- `manifest.json` — app name, launch scope, and theme metadata
+- `favicon.svg` — green chat icon
+- `.nojekyll` — prevents GitHub Pages from running Jekyll processing
+
+The manifest is metadata only. This project does not currently include a service worker or guarantee offline installation.
