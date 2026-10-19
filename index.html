@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Chat</title>
+  <title>Chatting — Local Demo</title>
   <style>
     * {
       box-sizing: border-box;
@@ -708,6 +708,24 @@
       object-fit: contain;
     }
 
+    .local-notice {
+      background: rgba(245, 158, 11, 0.12);
+      border: 1px solid rgba(245, 158, 11, 0.45);
+      color: #fde68a;
+      border-radius: 12px;
+      padding: 10px 12px;
+      margin: 0 0 18px;
+      font-size: 0.85rem;
+      line-height: 1.45;
+    }
+    body.light-mode .local-notice {
+      color: #92400e;
+      background: rgba(245, 158, 11, 0.10);
+      border-color: rgba(217, 119, 6, 0.35);
+    }
+    .backup-help { color: #9ca3af; line-height: 1.5; font-size: 0.85rem; margin-bottom: 10px; }
+    body.light-mode .backup-help { color: #6b7280; }
+
     @media (max-width: 768px) {
       .message-bubble {
         max-width: 85%;
@@ -723,6 +741,11 @@
   <div class="auth-screen" id="authScreen">
     <div class="auth-box">
       <h1>Chat</h1>
+      <div class="local-notice" role="note">
+        <strong>Local-only demo:</strong> accounts and messages stay in this browser on this device.
+        There is no shared login or live cross-device sync. Use Settings → Local data backup to move a copy manually.
+        Do not use a password you use anywhere else.
+      </div>
 
       <div id="authError" class="error-box"></div>
       <div id="authSuccess" class="success-box"></div>
@@ -780,9 +803,13 @@
       </div>
     </div>
 
+    <div class="local-notice" style="margin: 10px 16px 0;" role="status">
+      <strong>Local-only mode:</strong> this chat is not shared with other devices. Use Settings → Local data backup for a manual transfer.
+    </div>
+
     <div class="chat-body">
       <div class="online-info" onclick="openOnlineUsers()">
-        👥 <span id="onlineCount">0</span> online • Click to view
+        👥 <span id="onlineCount">0</span> saved accounts on this browser • Click to view
       </div>
 
       <div class="messages-container" id="messagesContainer">
@@ -847,6 +874,15 @@
         </div>
       </div>
 
+      <!-- Local data backup and manual device transfer -->
+      <div class="settings-section">
+        <h3>Local data backup</h3>
+        <p class="backup-help">Export a private backup, then import that file on another device to move a snapshot. This is manual only—there is no automatic or live sync. Keep backups private.</p>
+        <button class="btn" type="button" onclick="exportBackup()">⬇️ Export Backup</button>
+        <input id="backupFileInput" class="file-input" type="file" accept="application/json,.json" />
+        <button class="btn" type="button" style="margin-top: 8px;" onclick="document.getElementById('backupFileInput').click()">⬆️ Import Backup</button>
+      </div>
+
       <!-- Danger Zone -->
       <div class="settings-section">
         <h3>Danger</h3>
@@ -859,7 +895,7 @@
   <div class="modal" id="onlineUsersModal">
     <div class="modal-content">
       <div class="modal-header">
-        <h2>👥 Online Users</h2>
+        <h2>👥 Accounts on This Browser</h2>
         <button class="close-modal" onclick="closeOnlineUsers()">✕</button>
       </div>
       <div class="online-users-list" id="onlineUsersList"></div>
