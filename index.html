@@ -993,7 +993,7 @@
       // Old accounts used plaintext local passwords; upgrade them after a successful login.
       if (typeof record === "string") return password === record;
       if (!record || record.algorithm !== "PBKDF2-SHA-256" ||
-          !Number.isInteger(record.iterations) || record.iterations < 10000 ||
+          !Number.isInteger(record.iterations) || record.iterations < 10000 || record.iterations > 1000000 ||
           typeof record.salt !== "string" || typeof record.hash !== "string" ||
           !crypto || !crypto.subtle) return false;
       try {
@@ -1276,7 +1276,7 @@
             importedUsers[name] = await hashPassword(record);
           } else if (record && record.algorithm === "PBKDF2-SHA-256" &&
                      typeof record.salt === "string" && typeof record.hash === "string" &&
-                     Number.isInteger(record.iterations) && record.iterations >= 10000) {
+                     Number.isInteger(record.iterations) && record.iterations >= 10000 && record.iterations <= 1000000) {
             importedUsers[name] = record;
           }
         }
